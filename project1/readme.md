@@ -4,7 +4,7 @@ A python script that spins up a VM of a given specification, and executes anothe
 
 ### 1. Create a docker image that runs a script and copys the output file to an s3 bucket
    Go to docker folder:<br>
-       *`sudo docker build -t p1image .`
-       *`sudo docker run -e AWS_ACCESS_KEY_ID='' -e AWS_SECRET_ACCESS_KEY='' p1image`
+       * `sudo docker build -t p1image .`
+       * `sudo docker run -e AWS_ACCESS_KEY_ID='' -e AWS_SECRET_ACCESS_KEY='' p1image`
 ### 2. Create a terraform configuration that runs the image in a VM instance
 ### 3. Use python to orchestrate the process
