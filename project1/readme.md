@@ -11,6 +11,12 @@ A python script that spins up a VM of a given specification, and executes anothe
        sudo docker run -e AWS_ACCESS_KEY_ID='' -e AWS_SECRET_ACCESS_KEY='' p1image
     ```
 ### 2. Create a terraform configuration that runs the image in a VM instance
-* step 1
+* Set up docker repo
+   ```
+        sudo docker tag p1image stanworld/p1image
+   ```
+   ```
+        sudo docker push stanworld/p1image
+   ```
 * step 2
 ### 3. Use python to orchestrate the process
