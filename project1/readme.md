@@ -19,4 +19,5 @@ A python script that spins up a VM of a given specification, and executes anothe
         sudo docker push stanworld/p1image
    ```
 * step 2
+* step 3
 ### 3. Use python to orchestrate the process
