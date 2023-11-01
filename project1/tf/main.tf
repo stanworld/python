@@ -23,7 +23,15 @@ resource "aws_security_group" "allow_ssh" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"  # All protocols
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
+
 
 
 resource "aws_instance" "app_server" {
@@ -38,10 +46,11 @@ resource "aws_instance" "app_server" {
 
   user_data = <<-EOF
               #!/bin/bash
-              apt-get update -y
-              apt-get install -y docker.io
-              usermod -aG docker ubuntu
-              systemctl enable docker
-              systemctl start docker
+              sudo apt-get update -y
+              sudo apt-get install -y docker.io
+              sudo usermod -aG docker ubuntu
+              sudo systemctl enable docker
+              sudo systemctl start docker
+              sudo docker run -d -e AWS_ACCESS_KEY_ID='' -e AWS_SECRET_ACCESS_KEY='' stanworld/p1image
               EOF
 }

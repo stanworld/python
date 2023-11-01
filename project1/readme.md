@@ -8,7 +8,7 @@ A python script that spins up a VM of a given specification, and executes anothe
         sudo docker build -t p1image .
     ```
     ```
-       sudo docker run -e AWS_ACCESS_KEY_ID='' -e AWS_SECRET_ACCESS_KEY='' p1image
+       sudo docker run -e AWS_ACCESS_KEY_ID='' -e AWS_SECRET_ACCESS_KEY='' stanworld/p1image
     ```
 ### 2. Create a terraform configuration that runs the image in a VM instance
 * Set up docker repo
@@ -18,6 +18,6 @@ A python script that spins up a VM of a given specification, and executes anothe
    ```
         sudo docker push stanworld/p1image
    ```
-* step 2
-* step 3
+* In user_data piece calling docker run
+* set up an iam_instance_profile for an AWS EC2 instance in Terraform with s3 permissions. If your VM instance is running in AWS, you can associate an IAM role with the instance that grants the necessary AWS permissions. The IAM role can be assumed by the EC2 instance, and any AWS CLI commands or SDK calls made within the instance (including Docker containers) will automatically use the associated role's permissions.
 ### 3. Use python to orchestrate the process
