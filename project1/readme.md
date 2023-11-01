@@ -19,5 +19,5 @@ A python script that spins up a VM of a given specification, and executes anothe
         sudo docker push stanworld/p1image
    ```
 * In user_data piece calling docker run
-* set up an iam_instance_profile for an AWS EC2 instance in Terraform with s3 permissions. If your VM instance is running in AWS, you can associate an IAM role with the instance that grants the necessary AWS permissions. The IAM role can be assumed by the EC2 instance, and any AWS CLI commands or SDK calls made within the instance (including Docker containers) will automatically use the associated role's permissions.
+* set up an iam_instance_profile for an AWS EC2 instance in Terraform with s3 permissions. If your VM instance is running in AWS, you can associate an IAM role with the instance that grants the necessary AWS permissions. The IAM role can be assumed by the EC2 instance, and any AWS CLI commands or SDK calls made within the instance (even within a Docker container running in the Ec2 instance !!!!!) will automatically use the associated role's permissions.
 ### 3. Use python to orchestrate the process
