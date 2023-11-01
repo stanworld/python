@@ -109,7 +109,6 @@ resource "aws_instance" "app_server" {
               sudo usermod -aG docker ubuntu
               sudo systemctl enable docker
               sudo systemctl start docker
-              # sudo docker run -d -e AWS_ACCESS_KEY_ID='' -e AWS_SECRET_ACCESS_KEY='' stanworld/p1image
               sudo docker run -d stanworld/p1image
               EOF
 }

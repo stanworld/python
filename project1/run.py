@@ -1,21 +1,31 @@
-import pandas as pd
- 
-# read by default 1st sheet of an excel file
-inputfile = input("Enter the full name of input file: ")
-outputfile = input("Enter the full name of output file: ")
-inputsheet = input("Enter the name of input sheet: ")
-outputsheet = input("Enter the name of output sheet: ")
-df1 = pd.read_excel(inputfile, sheet_name=inputsheet)
+import subprocess
+import time
 
-print("Before processing: number of rows:" + str(len(df1)))
-df2 = df1[df1["Sample Status"] != "Abandoned" ]
-df2 = df2[df2["PF Bases (BC)"]/pow(10,9) > 9.5 ]
-df2 = df2[df2["Target Bases @ 10X % (HS)"] > 85 ]
-print("After processing: number of rows:"+ str(len(df2)))
-print("Selecting columns to generate new sheet")
-selected_columns = df2[['Project', 'Collaborator Sample ID']]
-selected_columns.to_excel(outputfile, sheet_name=outputsheet, index=False)
-print("Job Done!")
+def run_terraform_command(command):
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
+    while True:
+        output = process.stdout.readline()
+        if process.poll() is not None:
+            break
+        if output:
+            print(output.decode('utf-8').strip())
+
+# Replace with the path to your Terraform directory
+terraform_dir = "/home/stan/Code/python/project1/tf"
+
+# Run 'terraform init' to initialize Terraform (if needed)
+run_terraform_command(f"terraform -chdir={terraform_dir} init")
+
+# Run 'terraform apply' to apply the changes
+run_terraform_command(f"terraform -chdir={terraform_dir} apply -auto-approve")
+
+# Wait for a while to let worker.sh finish
+print("Waiting for 5 minute...\n")
+
+time.sleep(60*5)
+
+# Run 'terraform destroy' to destroy the resources
+run_terraform_command(f"terraform -chdir={terraform_dir} destroy -auto-approve")
 
 
 
