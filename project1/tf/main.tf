@@ -112,3 +112,13 @@ resource "aws_instance" "app_server" {
               sudo docker run -d stanworld/p1image
               EOF
 }
+
+resource "aws_sns_topic" "example_topic" {
+  name = "example-topic"
+}
+
+resource "aws_sns_topic_subscription" "email_subscription" {
+  topic_arn = aws_sns_topic.example_topic.arn
+  protocol  = "email"
+  endpoint  = "songtancs@gmail.com"
+}
