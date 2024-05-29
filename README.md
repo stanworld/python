@@ -3,7 +3,7 @@
 ## k8s in action
 Learning notes about k8s in action
 
-### namespace and cgroup
+### Chapter 1: Namespace and cgroup
 - namespace is used isolate processes
 - since parent process and child process are in the same pid namespace, they can see similar number of processes
 - ps -ef to list all processes
@@ -13,3 +13,5 @@ Learning notes about k8s in action
 - /sys/fs/cgroup is the place where user space and kernel interact about cgroup settings
 - use unshare command to specify the namespace that a child process doesn't want to share with its parent.
 - dmesg -T | grep "oom" is used to check kernel message about out of memory error
+
+### Chapter 2: 
