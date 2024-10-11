@@ -27,3 +27,8 @@ spec:
   volumes:
   - name: log-volume
     emptyDir: {}
+
+
+####
+kubectl get pod <pod-name> -n <namespace> -o yaml > pod-config.yaml
+
