@@ -32,3 +32,7 @@ spec:
 ####
 kubectl get pod <pod-name> -n <namespace> -o yaml > pod-config.yaml
 
+##########################
+
+kubectl create deployment --image=nginx nginx --dry-run=client -o yaml > nginx-deployment.yaml
+
