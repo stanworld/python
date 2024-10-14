@@ -1,5 +1,6 @@
 # K8s NOTEs
-## time-check-pod.yaml
+## pod template with emptyDir and multiple lines of args
+```
 apiVersion: v1
 kind: Pod
 metadata:
@@ -29,7 +30,7 @@ spec:
   - name: log-volume
     emptyDir: {}
 
-
+```
 ##
 kubectl get pod <pod-name> -n <namespace> -o yaml > pod-config.yaml
 
