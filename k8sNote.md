@@ -1,4 +1,5 @@
-# time-check-pod.yaml
+# K8s NOTEs
+## time-check-pod.yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -29,10 +30,10 @@ spec:
     emptyDir: {}
 
 
-####
+##
 kubectl get pod <pod-name> -n <namespace> -o yaml > pod-config.yaml
 
-##########################
+##
 
 kubectl create deployment --image=nginx nginx --dry-run=client -o yaml > nginx-deployment.yaml
 
