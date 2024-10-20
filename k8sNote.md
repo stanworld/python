@@ -40,3 +40,5 @@ kubectl create deployment --image=nginx nginx --dry-run=client -o yaml > nginx-d
 
 kubectl taint nodes node1 color=blue:NoSchedule 
 
+kubectl taint nodes node1 key1:NoSchedule-
+
