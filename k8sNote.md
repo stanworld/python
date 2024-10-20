@@ -42,3 +42,8 @@ kubectl taint nodes node1 color=blue:NoSchedule
 
 kubectl taint nodes node1 key1:NoSchedule-
 
+## Label selector OR, AND operation
+kubectl get pods -l 'environment in (production, staging)'
+
+kubectl get pods -l environment=production,tier=frontend
+
