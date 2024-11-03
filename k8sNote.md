@@ -47,3 +47,6 @@ kubectl get pods -l 'environment in (production, staging)'
 
 kubectl get pods -l environment=production,tier=frontend
 
+## Check kubelet configuration
+sudo systemctl cat kubelet
+
